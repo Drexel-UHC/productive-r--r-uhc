@@ -1,10 +1,13 @@
 ---
 title: "Test Doc"
 format: 
-  html
+  html:
+    embed-resources: true
+    df-print: kable
 editor: visual
 editor_options: 
-  chunk_output_type: console
+  chunk_output_type: inline
+fig-cap-location: margin
 execute:
   message: false
   warning: false
@@ -12,6 +15,8 @@ execute:
 ---
 
 # Analysis
+
+## Data
 
 We are turning the analysis.R into a notebook.
 
@@ -36,8 +41,8 @@ data <- read.csv("https://raw.githubusercontent.com/holtzy/R-graph-gallery/maste
 ## Plot
 
 ```{r}
-
-# 2. Data visualization ----
+#| fig.cap: "Data visualization - go penguins go penguins go penguins go penguins go penguins go penguins go penguins go penguins go penguins go penguins go penguins go penguins go penguins "
+ 
 data %>%
   na.omit() %>%
   ggplot(aes(x = bill_length_mm, y = bill_depth_mm, color = species, shape = species)) +
@@ -46,4 +51,61 @@ data %>%
   scale_shape_manual(values = c("Adelie" = 16, "Chinstrap" = 17, "Gentoo" = 18))
  
 ```
+
+# Nice figures
+
+## Patchwork
+
+```{r}
+# install.packages('patchwork')
+library(patchwork)
+p1 <- ggplot(mtcars) + geom_point(aes(mpg, disp))
+p2 <- ggplot(mtcars) + geom_boxplot(aes(gear, disp, group = gear))
+p1 + p2
+```
+
+## Quarto features
+
+```{r}
+#| layout-ncol: 2
+
+p1
+p2
+
+```
+
+## Steve copy
+
+![](assets/penguins-img.png)
+ 
+## Images
+
+![](images/clipboard-3142843217.png)
+
+## Workshop
+
+
+![](assets/penguins-img.png)
+Use the layout-ncol to create a 2 columns layout. Compute the average bill length per species and display the result on the left. Do the same for the average bill depth on the right.
+
+```{r}
+#| layout-ncol: 2
+#| code-fold: true
+#| code-summary: "summary tables from workshop"
+
+
+## calculate
+results_left = data %>% 
+  group_by(species) %>% 
+  summarise(avg_bill_lenght = mean(bill_length_mm))
+
+results_right = data %>% 
+  group_by(species) %>% 
+  summarise(avg_bill_depth = mean(bill_depth_mm))
+
+## Show results
+results_left
+results_right
+```
+
  
