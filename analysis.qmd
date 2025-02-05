@@ -27,6 +27,7 @@ We are turning the analysis.R into a notebook.
 ## Load library
 library(tidyverse)
 library(readxl)
+library(reactable)
 
 
 # 1. clean data ----
@@ -40,8 +41,10 @@ data <- read.csv("https://raw.githubusercontent.com/holtzy/R-graph-gallery/maste
 
 ## Plot
 
+
 ```{r}
-#| fig.cap: "Data visualization - go penguins go penguins go penguins go penguins go penguins go penguins go penguins go penguins go penguins go penguins go penguins go penguins go penguins "
+#| fig.cap: "Data visualization - go penguins go  "
+ 
  
 data %>%
   na.omit() %>%
@@ -73,14 +76,23 @@ p1
 p2
 
 ```
-
-## Steve copy
-
-![](assets/penguins-img.png)
  
+
 ## Images
 
+
+::: {.panel-tabset}
+
+## Donuts
+
 ![](images/clipboard-3142843217.png)
+
+
+## Penguin
+
+![](assets/penguins-img.png)
+
+::: 
 
 ## Workshop
 
@@ -92,6 +104,7 @@ Use the layout-ncol to create a 2 columns layout. Compute the average bill lengt
 #| layout-ncol: 2
 #| code-fold: true
 #| code-summary: "summary tables from workshop"
+#| df-print: kable
 
 
 ## calculate
@@ -108,4 +121,10 @@ results_left
 results_right
 ```
 
+
+See interactive table reactables
+
+```{r}
+data %>% reactable(searchable =   T)
+```
  
