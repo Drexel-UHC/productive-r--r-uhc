@@ -11,7 +11,6 @@ execute:
   code-fold: true
 ---
 
-
 # Analysis
 
 We are turning the analysis.R into a notebook.
@@ -30,8 +29,13 @@ library(readxl)
 ## 1.1 Import Data ----
 data <- read.csv("https://raw.githubusercontent.com/holtzy/R-graph-gallery/master/DATA/data_2.csv")
  
-## 1.2 Explore data ----
-glimpse(data) 
+
+
+```
+
+## Plot
+
+```{r}
 
 # 2. Data visualization ----
 data %>%
@@ -40,42 +44,6 @@ data %>%
   geom_point() +
   labs(x = "Bill Length (mm)", y = "Bill Depth (mm)", title = "Penguin Bill Dimensions") +
   scale_shape_manual(values = c("Adelie" = 16, "Chinstrap" = 17, "Gentoo" = 18))
-
-
-# 3. calculations
-calc_mean_bill <- function(island_name) {
-  filtered_data <- subset(na.omit(data), species == "Adelie" & island == island_name)
-  mean_bill_length <- mean(filtered_data$bill_length_mm)
-  return(round(mean_bill_length, 2))
-}
-
-# Call the function for each island
-calc_mean_bill("Torgersen")
-calc_mean_bill("Biscoe")
-calc_mean_bill("Dream")
-
-
+ 
 ```
-
-
-# Markdown
-
-I __love__ the `boxplot()` function of R, *so much*!
-
-
-## Lists
-
-### Unordered
-
-* Item 1 
-* Item 2 
-  * Sub-item 1
-  
-### Ordered
-
-1. fruit
-2. meat
-   1. fd
-   
-   
-
+ 
