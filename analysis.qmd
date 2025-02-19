@@ -4,7 +4,7 @@ format:
   html:
     embed-resources: true
     df-print: kable
-editor: visual
+editor: source
 editor_options: 
   chunk_output_type: inline
 fig-cap-location: margin
@@ -41,7 +41,6 @@ data <- read.csv("https://raw.githubusercontent.com/holtzy/R-graph-gallery/maste
 
 ## Plot
 
-
 ```{r}
 #| fig.cap: "Data visualization - go penguins go  "
  
@@ -76,29 +75,22 @@ p1
 p2
 
 ```
- 
 
 ## Images
 
-
-::: {.panel-tabset}
-
+::: panel-tabset
 ## Donuts
 
 ![](images/clipboard-3142843217.png)
 
-
 ## Penguin
 
 ![](assets/penguins-img.png)
-
-::: 
+:::
 
 ## Workshop
 
-
-![](assets/penguins-img.png)
-Use the layout-ncol to create a 2 columns layout. Compute the average bill length per species and display the result on the left. Do the same for the average bill depth on the right.
+![](assets/penguins-img.png) Use the layout-ncol to create a 2 columns layout. Compute the average bill length per species and display the result on the left. Do the same for the average bill depth on the right.
 
 ```{r}
 #| layout-ncol: 2
@@ -121,10 +113,8 @@ results_left
 results_right
 ```
 
-
 See interactive table reactables
 
 ```{r}
 data %>% reactable(searchable =   T)
 ```
- 
